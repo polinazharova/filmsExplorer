@@ -1,0 +1,19 @@
+@use '@styles/_variables' as v;
+
+.back-btn {
+  display: block;
+
+  padding: 5px;
+  width: 50%;
+  margin: 0 auto;
+
+  background-color: v.$secondary-grey-color;
+  border: 1px solid black;
+
+  font-family: 'Raleway', sans-serif;
+
+  &:hover {
+    cursor: pointer;
+    background-color: v.$primary-grey-color;
+  }
+}

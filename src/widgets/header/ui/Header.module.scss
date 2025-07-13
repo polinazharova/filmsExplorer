@@ -1,0 +1,26 @@
+@use '@styles/variables' as v;
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 40px 20px 0;
+  font-size: large;
+
+  .divider {
+    min-width: 75%;
+    height: 1px;
+
+    margin: 20px 0;
+
+    background-color: v.$primary-grey-color;
+  }
+
+  .nav-link {
+    &-active {
+      text-decoration: underline;
+    }
+  }
+}

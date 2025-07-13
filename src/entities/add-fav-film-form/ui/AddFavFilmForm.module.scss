@@ -1,0 +1,47 @@
+@use '@styles/variables' as v;
+
+.add-fav-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 15px;
+
+  background-color: v.$secondary-grey-color;
+  border: 10px solid v.$primary-grey-color;
+
+  .btn-comp {
+    display: flex;
+    margin-top: 10px;
+
+    .accept-btn {
+      margin-right: 10px;
+    }
+
+    .accept-btn, .cancel-btn {
+      padding: 5px;
+
+      font-family: 'Raleway', sans-serif;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .accept-btn {
+      border: 1.5px solid #00f100;
+
+      &:hover {
+        background-color: rgba(56, 248, 56, 0.38);
+      }
+    }
+
+    .cancel-btn {
+      border: 1.5px solid red;
+
+      &:hover {
+        background-color: rgba(255, 0, 0, 0.46);
+      }
+    }
+  }
+}
