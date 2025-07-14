@@ -2,7 +2,7 @@ import styles from './InfoMessage.module.scss'
 import {ReactNode} from "react";
 
 interface Props {
-    color : 'red | neutral',
+    color : 'red' | 'neutral',
     children: ReactNode,
 }
 
