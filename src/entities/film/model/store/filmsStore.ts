@@ -65,6 +65,7 @@ class FilmStore {
         try {
             this.status = "loading";
             this.error = null;
+            this.films = [];
 
             const films = await filmApi.getFilms({
                 page: this.page,

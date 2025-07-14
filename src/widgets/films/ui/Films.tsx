@@ -20,7 +20,6 @@ export const Films = observer(({films}: Props) => {
             return;
         }
         const controller = new AbortController();
-        console.log('REQ')
         filmService.getFilms();
         return () => controller.abort();
     }, [filmStore.year, filmStore.genre, filmStore.rating]);
@@ -35,7 +34,8 @@ export const Films = observer(({films}: Props) => {
             </div>
         );
     }
-//ПОДУМАТЬ ПОЧЕМУ БЕЗ LENGTH ПОСЛЕ ФИЛЬМЫ НЕ НАЙДЕНЫ НЕ ПОКАЗЫВАЕТСЯ СКЕЛЕТОН
+
+
     if (filmStore.status === 'loading' && !filmStore.films?.length) {
         return (
             <div className={styles["films-container"]}>
@@ -70,7 +70,7 @@ export const Films = observer(({films}: Props) => {
                     ))}
                 </div>
             }
-            endMessage={<p>No more results</p>}
+            endMessage={<InfoMessage color="neutral">Больше ничего не найдено</InfoMessage>}
         >
             <div className={styles["films-container"]}>
                 {filmStore.films.map((film) => (

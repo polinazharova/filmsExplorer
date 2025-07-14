@@ -60,11 +60,19 @@ export const filmService = {
     },
 
     getRating() {
-        return filmStore.rating.split('-').map(Number);
+        const rating = filmStore.rating.split('-').map(Number);
+        if (rating.length === 1) {
+            return [rating[0], rating[0]];
+        }
+        return rating;
     },
 
     getYear() {
-        return filmStore.year.split('-').map(Number);
+        const year = filmStore.year.split('-').map(Number);
+        if (year.length === 1) {
+            return [year[0], year[0]];
+        }
+        return year;
     },
 
     setGenre(genre : string[]) {
@@ -81,11 +89,15 @@ export const filmService = {
     },
 
     setRating(rating : number[] | string) {
+        const ratingNormalize = (currRating : string) => {
+            return currRating === '0-0' ? '0' : currRating;
+        }
+
         if (typeof rating === "string") {
-            filmStore.setFilmRating(rating);
+            filmStore.setFilmRating(ratingNormalize(rating));
             return;
         }
         const newRating = `${rating[0]}-${rating[1]}`;
-        filmStore.setFilmRating(newRating);
+        filmStore.setFilmRating(ratingNormalize(newRating));
     }
 }

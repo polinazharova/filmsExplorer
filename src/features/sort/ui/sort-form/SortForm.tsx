@@ -2,8 +2,8 @@ import styles from './SortForm.module.scss'
 import {RatingSort} from "../rating-sort/RatingSort";
 import {GenreSort} from "../genre-sort/GenreSort";
 import {YearSort} from "../year-sort/YearSort";
-import {filmService} from "@/entities/film";
-import {useState} from "react";
+import {filmService, filmStore} from "@/entities/film";
+import {useEffect, useState} from "react";
 
 export const SortForm = () => {
     const [year, setYear] = useState<number[]>(filmService.getYear());
@@ -16,6 +16,18 @@ export const SortForm = () => {
         filmService.setRating(rating);
         filmService.setYear(year);
     }
+
+    useEffect(() => {
+        setYear(filmService.getYear());
+    }, [filmStore.year]);
+
+    useEffect(() => {
+        setGenre(filmService.getGenre());
+    }, [filmStore.genre]);
+
+    useEffect(() => {
+        setRating(filmService.getRating());
+    }, [filmStore.rating]);
 
     return (
         <form className={styles.sort} onSubmit={onSubmit}>

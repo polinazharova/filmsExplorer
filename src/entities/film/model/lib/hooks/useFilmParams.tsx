@@ -13,17 +13,14 @@ export const useFilmParams = () => {
                 filmService.setRating(rating);
             })
         }
-        console.log(rating);
         const year = searchParams.get('year');
         if (year) {
             runInAction(() => {
                 filmService.setYear(year);
             })
         }
-        console.log(year)
         const genre = searchParams.getAll('genre');
-        if (genre && genre.length > 0) {
-            console.log('ВЫСТАВЛЯЮ ЖАНР')
+        if (genre?.length > 0) {
             runInAction(() => {
                 filmService.setGenre(genre);
             })
