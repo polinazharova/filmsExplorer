@@ -1,50 +1,91 @@
-# React + TypeScript + Vite
+# 🎬 Инструкция по запуску приложения
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📁 1. Создание `.env` файла
 
-Currently, two official plugins are available:
+Создайте файл `.env` на основе шаблона `.env.default`, затем вставьте в него ваш токен для API Кинопоиска:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```bash
+cp .env.default .env
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Откройте `.env` и замените значение переменной `VITE_API_TOKEN` на ваш персональный токен для Кинопоиск API.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+---
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+## ⚙️ 2. Запуск с помощью `make`
+
+Убедитесь, что у вас установлена утилита `make`.
+
+### 🔧 Сборка и запуск:
+
+```bash
+make build
+make run
 ```
+
+ИЛИ одной командой:
+
+```bash
+make start
+```
+
+### 🛑 Завершение работы:
+
+```bash
+make stop
+```
+
+### 🧹 Очистка (опционально):
+
+```bash
+make clean
+```
+
+Удаляет все созданные образы, контейнеры и тома.
+
+---
+
+## 🚀 3. Альтернатива без `make`
+
+Если `make` не установлен, используйте `docker-compose` напрямую.
+
+### Сборка и запуск:
+
+```bash
+docker-compose up --build
+```
+
+### Завершение работы:
+
+```bash
+docker-compose down
+```
+
+### Очистка (опционально):
+```bash
+docker-compose down --rmi all --volumes
+```
+---
+
+## 🔍 Поисковые параметры
+
+Для фильтрации фильмов используйте следующие query-параметры в URL:
+
+| Параметр | Пример запроса                          | Описание                          |
+|----------|------------------------------------------|-----------------------------------|
+| `year`   | `year=2025` или `year=1990-2000`         | Год выпуска фильма или диапазон  |
+| `rating` | `rating=7` или `rating=5-9`              | Рейтинг фильма                    |
+| `genre`  | `genre=комедия`                          | Один жанр                         |
+| `genre`  | `genre=комедия&genre=мелодрама`          | Несколько жанров одновременно     |
+
+---
+
+## 🛠️ Требования
+
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
+- [Make](https://www.gnu.org/software/make/)
+
+---
+
+
