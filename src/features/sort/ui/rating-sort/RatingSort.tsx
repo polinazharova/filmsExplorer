@@ -20,7 +20,7 @@ export const RatingSort = ({rating, setRating} : Props) => {
         <div className={styles['rating-sort']}>
             <Box sx={{width: 300}}>
                 <Typography sx={{fontFamily: 'Raleway, sans-serif'}} id="rating-slider-label" gutterBottom>
-                    Рейтинг IMDb
+                    Рейтинг
                 </Typography>
                 <Slider
                     getAriaLabel={() => 'Years range'}
